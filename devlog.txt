@@ -6,7 +6,7 @@ marcjiang123 -- 2022-10-31 7:42
 williamG -- 2022-11-01 11:49
     completed first design doc with all the necessary components, wrote 
     discription of relationship between components and how data is organized. 
-    Distributed roles/assignments to each devo. 
+    Distributed roles/assignments to each devo and created base files for this repo. 
 
 williamG -- 2022-11-02 20:50
     revised our previous design doc with the feedback received 
