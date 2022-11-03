@@ -1,0 +1,9 @@
+williamG -- 2022-11-01 11:49
+    completed first design doc with all the necessary components, wrote 
+    discription of relationship between components and how data is organized. 
+    Distributed roles/assignments to each devo. 
+
+williamG -- 2022-11-02 20:50
+    revised our previous design doc with the feedback received 
+    from other groups (new changes denoted in yellow highlights). Made certain 
+    phrases and steps clearer in the components sections
