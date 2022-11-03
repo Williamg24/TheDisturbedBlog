@@ -1,3 +1,8 @@
+marcjiang123 -- 2022-10-31 7:42
+    created design doc
+    started listed necessary components and their relationships
+    described general outline of organization
+
 williamG -- 2022-11-01 11:49
     completed first design doc with all the necessary components, wrote 
     discription of relationship between components and how data is organized. 
