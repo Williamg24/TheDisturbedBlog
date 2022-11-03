@@ -12,3 +12,6 @@ williamG -- 2022-11-02 20:50
     revised our previous design doc with the feedback received 
     from other groups (new changes denoted in yellow highlights). Made certain 
     phrases and steps clearer in the components sections
+
+marcjiang123 -- 2022-11-03 2:07
+    created component map
