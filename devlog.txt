@@ -1,21 +1,70 @@
-marcjiang123 -- 2022-10-31 7:42
-    created design doc
-    started listed necessary components and their relationships
-    described general outline of organization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+USAGE:
+* Replace all fields, angle brackets included, with specified info.
+  eg, pd <pd#> --> pd 3
+* Delete these instructions once all teammates understand usage.
+  (from tilde bar above to tilde bar below)
+* rename this file devlog.txt
 
+devlog--
+Use keyboard shortcut to jump to end,
+ replicate entry template, (Ctrl-Shift up x5, Ctrl-X, Ctrl-V x2)
+ modify appropriately.
+Each entry should begin with the following format:
+ firstL -- TIMESTAMP\n
+e.g.: 
+clydeS -- 2999-12-31 23:59
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Disturbed Window Monsters
+David Chen
+William Guo
+Marc Jiang
+pd 7
+---------------------
+p00: User web blog
+
+
+ ______   ______   __   __   __       ______   _______     
+/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
+\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__  
+ \:\ \ \ \\:\/___/\\:\ \\ \ \\:\ \    \:\ \ \ \\:\ /____/\ 
+  \:\ \ \ \\::___\/_\:\_/.:\ \\:\ \____\:\ \ \ \\:\\_  _\/ 
+   \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \ 
+    \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/ 
+==============================================================
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+marcJ -- 2022-10-31 7:42
+--------------------------------------------------------------
+* created design doc
+* started listed necessary components and their relationships described general outline of organization
+==============================================================
 williamG -- 2022-11-01 11:49
-    completed first design doc with all the necessary components, wrote 
-    discription of relationship between components and how data is organized. 
-    Distributed roles/assignments to each devo and created base files for this repo. 
-
+--------------------------------------------------------------
+* completed first design doc with all the necessary components and created site map
+* wrote description of relationship between components and how data is organized. 
+* Distributed roles/assignments to each devo and created base files for this repo 
+==============================================================
 williamG -- 2022-11-02 20:50
-    revised our previous design doc with the feedback received 
-    from other groups (new changes denoted in yellow highlights). Made certain 
-    phrases and steps clearer in the components sections
-
-marcjiang123 -- 2022-11-03 2:07
-    created component map
-
-dchen278 -- 2022-11-07 13:18
-    initialized repo contents (templates, css, _init_)
-    added login route and login page
+--------------------------------------------------------------
+* revised our previous design doc with the feedback received from other groups (new changes denoted in yellow highlights) 
+* Made certain phrases and steps clearer in the components sections
+==============================================================
+marcJ -- 2022-11-03 2:07
+--------------------------------------------------------------
+* created component map
+==============================================================
+davidC -- 2022-11-07 13:18
+--------------------------------------------------------------
+* initialized repo contents (templates, css, _init_)
+* added login route and login page
+==============================================================
+williamG -- 2022-11-08 23:33
+--------------------------------------------------------------
+* updated devlog formatting and uploaded team flag
+* created python file for username/password database and added simple functions including:
+    * check if username exists in database
+    * add new username and password to database
+==============================================================
