@@ -31,15 +31,15 @@ def disp_loginpage():
     print("***DIAG: request.headers ***")
     print(request.headers)
     if "username" in session:
-        return render_template('index.html', status=True)
+        return render_template('index.html', success=True)
     else:
-        return render_template('index.html', status=False)
+        return render_template('index.html', success=False)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == "GET":
         if "username" in session:
-            return render_template('response.html', status="Successful")
+            return render_template('index.html', success=True)
         else:
             return render_template('login.html')
     elif request.method == "POST":
@@ -56,13 +56,13 @@ def login():
 
         if request.form['username'] == username and request.form['password'] == password:
             session["username"] = request.form.get("username")
-            return render_template('response.html', status="Successful")
+            return redirect("/")
         elif request.form['username'] != username and request.form['password'] != password:
-            return render_template('response.html', status="Incorrect Username and Password")
+            return render_template('index.html', success=False, message="Incorrect Username and Password")
         elif request.form['username'] != username:
-            return render_template('response.html', status="Incorrect Username")
+            return render_template('index.html', success=False, message="Incorrect Username")
         elif request.form['password'] != password:
-            return render_template('response.html', status="Incorrect Password")
+            return render_template('index.html', success=False, message="Incorrect Password")
         return f"Waaaa hooo HAAAH {request.form['username']}"  # response to a form submission
     else:
         return Response(status=405)
@@ -93,9 +93,9 @@ def signup():
         print("***DIAG: request.headers ***")
         # use helper functions from db_user.py to add user to database
         if add_to_db(request.form['username'], request.form['password']):
-            return render_template('response.html', status="Successful")
+            return render_template('index.html', success=True, message="Successful")
         else:
-            return render_template('response.html', status="Username already exists")
+            return render_template('index.html', success=False, message="Username already exists")
     else:
         return Response(status=405)
 

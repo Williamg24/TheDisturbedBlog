@@ -21,8 +21,11 @@
             Welcome to the Disturbed Blog
         </h1>
         <!-- <p>Login Status: {{ status }}</p> -->
-        {% if status == "True" %}
-        adsasd
+        {% if message %}
+            {{message}}
+        {% endif %}
+        {% if success == True %}
+            You are logged in. Get ready to enjoy our quality content!
         {% else %}
         <a href="/login">
             <button>
