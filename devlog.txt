@@ -68,3 +68,11 @@ williamG -- 2022-11-08 23:33
     * check if username exists in database
     * add new username and password to database
 ==============================================================
+williamG -- 2022-11-09 23:16
+--------------------------------------------------------------
+* added some requirements in req.txt and added launch instructions in readme
+* added new function and modified older ones in db_users including:
+    * checking if password matches the username
+    * fixing syntax issues with f string
+* ran tests for all functions in db_user
+==============================================================
