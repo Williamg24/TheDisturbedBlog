@@ -6,7 +6,9 @@ db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops -- you will use cursor to trigger db events
 
 db.execute("DROP TABLE if exists usernames")
-c.execute("CREATE TABLE usernames(user TEXT, pass TEXT)")
+db.execute("DROP TABLE if exists main")
+c.execute("CREATE TABLE usernames(user TEXT UNIQUE, pass TEXT)")
+c.execute("CREATE TABLE main(user TEXT UNIQUE, title TEXT, content TEXT, date_added INTEGER, data_mod INTEGER, num_view INTEGER, time INTEGER)")
 
 #check if username in table: (helper function)
 def in_table(username):
@@ -37,6 +39,7 @@ def get_pass(username):
 #check if password is correct
 def correct_pass(username,password):
     return get_pass(username) == password
+
 
 db.commit() #save changes
 
