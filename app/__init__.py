@@ -7,6 +7,7 @@
 from flask import Flask  # facilitate flask webserving
 from flask import render_template  # facilitate jinja templating
 from flask import request, Response, redirect, session, url_for  # facilitate form submission
+from db_user import add_to_db, correct_pass, in_table
 
 # the conventional way:
 #from flask import Flask, render_template, request
@@ -74,6 +75,29 @@ def logout():
     if "username" in session:
         session.pop("username")
     return redirect("/auth")
+
+@app.route("/signup", methods=['GET', 'POST'])
+def signup():
+    if request.method == "GET":
+        return render_template('signup.html')
+    elif request.method == "POST":
+        print("\n\n\n")
+        print("***DIAG: this Flask obj ***")
+        print(app)
+        print("***DIAG: request obj ***")
+        print(request)
+        print("***DIAG: request.args ***")
+        print(request.form)
+        print("***DIAG: request.args['username']  ***")
+        print(request.form['username'])
+        print("***DIAG: request.headers ***")
+        # use helper functions from db_user.py to add user to database
+        if add_to_db(request.form['username'], request.form['password']):
+            return render_template('response.html', status="Successful")
+        else:
+            return render_template('response.html', status="Username already exists")
+    else:
+        return Response(status=405)
 
 
 

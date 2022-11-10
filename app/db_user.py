@@ -40,8 +40,6 @@ def correct_pass(username,password):
 
 db.commit() #save changes
 
-
-
 #db.close()  #close database
 #command = ""          # test SQL stmt in sqlite3 shell, save as string
 #c.execute(command)    # run SQL statement
