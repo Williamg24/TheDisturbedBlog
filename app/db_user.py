@@ -6,9 +6,9 @@ db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops -- you will use cursor to trigger db events
 
 db.execute("DROP TABLE if exists usernames")
-db.execute("DROP TABLE if exists main")
+db.execute("DROP TABLE if exists blog")
 c.execute("CREATE TABLE usernames(user TEXT UNIQUE, pass TEXT)")
-c.execute("CREATE TABLE main(user TEXT UNIQUE, title TEXT, content TEXT, date_added INTEGER, data_mod INTEGER, num_view INTEGER, time INTEGER)")
+c.execute("CREATE TABLE blog(user TEXT, title TEXT, content TEXT, date_added INTEGER, data_mod INTEGER, num_view INTEGER, time INTEGER, id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT UNIQUE)")
 
 #check if username in table: (helper function)
 def in_table(username):
@@ -40,6 +40,44 @@ def get_pass(username):
 def correct_pass(username,password):
     return get_pass(username) == password
 
+#add post to blog 
+def add_post(username,title,content,date_added,data_mod,num_view,time):
+    c.execute(f'INSERT INTO blog VALUES("{username}","{title}","{content}","{date_added}","{data_mod}","{num_view}","{time}")')
+    db.commit() 
+
+#gets all posts from blog
+def get_posts():
+    # sorted by latest to oldest
+    return list(c.execute("SELECT * FROM blog ORDER BY time DESC").fetchall())
+
+#allow post author to edit post
+def edit_post(username,title,content,date_added,data_mod,num_view,time):
+    if in_table(username):
+        c.execute(f'UPDATE blog SET title="{title}", content="{content}", date_added="{date_added}", data_mod="{data_mod}", num_view="{num_view}" WHERE time="{time}"')
+        db.commit() 
+        return True
+    return False
+
+#search for posts by title or content
+def search_posts(search):
+    return list(c.execute(f'SELECT * FROM blog WHERE title LIKE "%{search}%" OR content LIKE "%{search}%"').fetchall())
+
+#delete post
+def delete_post(username,time):
+    if in_table(username):
+        c.execute(f'DELETE FROM blog WHERE time="{time}"')
+        db.commit() 
+        return True
+    return False
+
+#get post author
+def get_author(slug):
+    return list(c.execute(f'SELECT user FROM blog WHERE slug="{slug}"').fetchall())[0][0]
+
+#increment number of views
+def increment_views(slug):
+    c.execute(f'UPDATE blog SET num_view=num_view+1 WHERE slug="{slug}"')
+    db.commit()
 
 db.commit() #save changes
 
