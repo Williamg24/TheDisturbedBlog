@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<!--
-  David Chen, William Guo, Marc Jiang
-  Disturbed Window Monsters
-  SoftDev
-  Oct 17 2022
- -->
 <html>
 
 <head>
@@ -23,15 +17,39 @@
         <!-- <p>Login Status: {{ status }}</p> -->
         {% if message %}
             {{message}}
-            <br>
         {% endif %}
         {% if success == True %}
             You are logged in. Get ready to enjoy our quality content!
+             <!-- Logout button -->
             <form method="POST" action="/logout">
-                <button type="submit" style="position:absolute ; padding:10px; background-color: aquamarine;">
+                <button type="submit" style="position:absolute; top:0%; right:0%;padding:10px; background-color: aquamarine;">
                   Logout
                 </button>
               </form>
+            
+            <!-- Creating/edit new blogs-->
+            <a href = "/blog">
+                <button style = position:absolution; padding:10px>
+                    Create New Blog
+                </button>
+
+                <div>
+                    <button>
+                        Edit Old Blogs
+                    </button>
+                </div>
+            </a>
+
+            <!-- Display table of written blogs-->
+            <table>
+                {% for row in data %}
+                <tr>
+                {% for item in row %}
+                    <td>{{ item }}</td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+            </table>
         {% else %}
             <a href="/login">
                 <button style = position:absolute padding:10px;>

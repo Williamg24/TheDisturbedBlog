@@ -57,7 +57,7 @@ def add_post(username,title,content,date_added,data_mod,num_view,time):
 #gets all posts from blog
 def get_posts():
     # sorted by latest to oldest
-    return list(c.execute("SELECT * FROM blog ORDER BY time DESC").fetchall())
+    return c.execute("SELECT * FROM blog ORDER BY time DESC").fetchall()
 
 #allow post author to edit post
 def edit_post(username,title,content,date_added,data_mod,num_view,time):
@@ -96,4 +96,6 @@ db.commit() #save changes
 
 
 # Tests
+add_to_db("DWM", "ABC")
+#add_post("DWM", "Test 1", "hello world", 11, 11, 0, 1123)
 print(get_users())

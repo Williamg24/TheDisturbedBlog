@@ -7,7 +7,7 @@
 from flask import Flask  # facilitate flask webserving
 from flask import render_template  # facilitate jinja templating
 from flask import request, Response, redirect, session, url_for  # facilitate form submission
-from db_user import add_to_db, correct_pass, in_table
+from db_user import add_to_db, correct_pass, in_table, get_posts
 
 # the conventional way:
 #from flask import Flask, render_template, request
@@ -30,8 +30,9 @@ def disp_loginpage():
     # print(request.args['username'])
     print("***DIAG: request.headers ***")
     print(request.headers)
+
     if "username" in session:
-        return render_template('index.html', success=True)
+        return render_template('index.html', success=True, data = get_posts())
     else:
         return render_template('index.html', success=False)
 
@@ -96,6 +97,22 @@ def signup():
             return render_template('index.html', success=False, message="Username already exists")
     else:
         return Response(status=405)
+
+@app.route("/blog", methods=['GET', 'POST'])
+def disp_blogpage():
+    print("\n\n\n")
+    print("***DIAG: this Flask obj ***")
+    print(app)  # displays app
+    print("***DIAG: request obj ***")
+    print(request)  # displays page request
+    print("***DIAG: request.args ***")
+    print(request.args)
+    # print("***DIAG: request.args['username']  ***")
+    # print(request.args['username'])
+    print("***DIAG: request.headers ***")
+    print(request.headers)
+
+    return render_template('blog.html')
 
 
 
