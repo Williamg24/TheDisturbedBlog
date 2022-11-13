@@ -76,3 +76,16 @@ williamG -- 2022-11-09 23:16
     * fixing syntax issues with f string
 * ran tests for all functions in db_user
 ==============================================================
+williamG -- 2022-11-10 15:48
+--------------------------------------------------------------
+* started working on second database table
+* updated helper functions get_password() and in_table()
+==============================================================
+williamG -- 2022-11-12 20:33
+--------------------------------------------------------------
+* removed hardcoded password and username so that login information would match with data from user table
+* created get_user() function for debugging purposes
+* fix sqlite same thread issue (credits to piazza post by Scubba-Doo Dog Erasers)
+* updated add_to_db(username,password) method so that input cannot be blank
+* modified index.html messages for when login fails
+==============================================================
