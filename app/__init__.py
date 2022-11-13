@@ -11,8 +11,8 @@ from db_user import add_to_db, correct_pass, in_table
 
 # the conventional way:
 #from flask import Flask, render_template, request
-username = "DWM"
-password = "ABC"
+#username = "DWM"
+#password = "ABC"
 
 app = Flask(__name__)  # create Flask object
 app.secret_key = "m4Wa0SY66R34R2fbty7P5Nmxg8fLNOQ6"
@@ -54,18 +54,16 @@ def login():
         print(request.form['username'])
         print("***DIAG: request.headers ***")
 
-        if request.form['username'] == username and request.form['password'] == password:
+    username = request.form['username']
+    password = request.form['password']
+    if in_table(username):
+        if correct_pass(username,password):
             session["username"] = request.form.get("username")
             return redirect("/")
-        elif request.form['username'] != username and request.form['password'] != password:
-            return render_template('index.html', success=False, message="Incorrect Username and Password")
-        elif request.form['username'] != username:
-            return render_template('index.html', success=False, message="Incorrect Username")
-        elif request.form['password'] != password:
+        else:
             return render_template('index.html', success=False, message="Incorrect Password")
-        return f"Waaaa hooo HAAAH {request.form['username']}"  # response to a form submission
     else:
-        return Response(status=405)
+        return render_template('index.html', success=False, message="Username does not exist")
 
 @app.route("/logout", methods=['POST'])
 def logout():
@@ -74,7 +72,7 @@ def logout():
     print(request.form)  # displays entered info as dict
     if "username" in session:
         session.pop("username")
-    return redirect("/auth")
+    return redirect("/")
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():

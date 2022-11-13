@@ -2,7 +2,7 @@ import sqlite3
 
 DB_FILE="user.db"
 
-db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+db = sqlite3.connect(DB_FILE,check_same_thread=False) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops -- you will use cursor to trigger db events
 
 db.execute("DROP TABLE if exists usernames")
@@ -13,19 +13,23 @@ c.execute("CREATE TABLE blog(user TEXT, title TEXT, content TEXT, date_added INT
 #check if username in table: (helper function)
 def in_table(username):
     user_list = list(c.execute("SELECT user FROM usernames").fetchall())
-    #print(user_list)
+    print(user_list)
     for i in user_list:
         for j in i:
-            return username == j
+            if username == j:
+                return True
     return False
 
 #adds new username and password to table if not exist
 def add_to_db(username,password):
+    if (username == "") or (password == ""):
+        return False
     if in_table(username): 
         return False
     else:
         c.execute(f'INSERT INTO usernames VALUES("{username}","{password}")')
     db.commit() 
+    return True
 
 #gets password of username: (helper function)
 def get_pass(username):
@@ -39,6 +43,11 @@ def get_pass(username):
 #check if password is correct
 def correct_pass(username,password):
     return get_pass(username) == password
+
+#get all usernames
+def get_users():
+    return c.execute("SELECT * FROM usernames").fetchall()
+
 
 #add post to blog 
 def add_post(username,title,content,date_added,data_mod,num_view,time):
@@ -87,10 +96,4 @@ db.commit() #save changes
 
 
 # Tests
-add_to_db("DWM","ABC") # added to table
-print(in_table("DWM")) #true
-print(in_table("MARC")) #false
-add_to_db("DWM","123") #shouldn't be added
-print(c.execute("SELECT * FROM usernames").fetchall())
-print("Password of 'DWM' is "+ get_pass("DWM")) # return ABC
-print(correct_pass("DWM","123")) # should be false
+print(get_users())

@@ -18,20 +18,26 @@
             Roster: David, William, Marc
         </h2>
         <h1>
-            Welcome to the Disturbed Blog
+            Welcome to the Disturbed Blog!
         </h1>
         <!-- <p>Login Status: {{ status }}</p> -->
         {% if message %}
             {{message}}
+            <br>
         {% endif %}
         {% if success == True %}
             You are logged in. Get ready to enjoy our quality content!
+            <form method="POST" action="/logout">
+                <button type="submit" style="position:absolute ; padding:10px; background-color: aquamarine;">
+                  Logout
+                </button>
+              </form>
         {% else %}
-        <a href="/login">
-            <button>
-                Get Started
-            </button>
-        </a>
+            <a href="/login">
+                <button style = position:absolute padding:10px;>
+                    Get Started
+                </button>
+            </a>
         {% endif %}
     </div>
 </body>
