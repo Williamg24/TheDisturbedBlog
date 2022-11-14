@@ -5,10 +5,10 @@ DB_FILE="user.db"
 db = sqlite3.connect(DB_FILE,check_same_thread=False) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops -- you will use cursor to trigger db events
 
-db.execute("DROP TABLE if exists usernames")
-db.execute("DROP TABLE if exists blog")
-c.execute("CREATE TABLE usernames(user TEXT UNIQUE, pass TEXT)")
-c.execute("CREATE TABLE blog(user TEXT, title TEXT, content TEXT, date_added INTEGER, data_mod INTEGER, num_view INTEGER, time INTEGER, id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT UNIQUE)")
+# db.execute("DROP TABLE if exists usernames")
+# db.execute("DROP TABLE if exists blog")
+c.execute("CREATE TABLE IF NOT EXISTS usernames(user TEXT UNIQUE, pass TEXT)")
+c.execute("CREATE TABLE IF NOT EXISTS blog(user TEXT, title TEXT, content TEXT, date_added INTEGER, data_mod INTEGER, num_view INTEGER, time INTEGER, id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT UNIQUE)")
 
 #check if username in table: (helper function)
 def in_table(username):
@@ -93,6 +93,10 @@ def get_author(slug):
 def increment_views(slug):
     c.execute(f'UPDATE blog SET num_view=num_view+1 WHERE slug="{slug}"')
     db.commit()
+
+# get one post by slug
+def get_post(slug):
+    return list(c.execute("SELECT * FROM blog WHERE slug=?",(slug,)).fetchall())[0]
 
 db.commit() #save changes
 
