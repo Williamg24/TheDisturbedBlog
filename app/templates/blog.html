@@ -15,29 +15,27 @@
         </h1>
     </div>
 
-    <div>
+    <form method = "POST" action ="/blog">
         <p>
             Name: 
             <br>
-            <input type="text" placeholder="Username" name="Username" required>
+            <input type="text" placeholder="Username" name="username" required>
         </p>
-
         <p>
             Title: 
             <br>
-            <input type="text" placeholder="Title" name="Title" required>
+            <input type="text" placeholder="Title" name="title" required>
         </p>
-
         <p>
             Date: 
             <br>
-            <input type= "number" placeholder="20221113" name="Date" required>
+            <input type= "number" placeholder="20221113" name="date" required>
         </p>
-    </div>
+        <textarea name="context" style = "width:80%" rows="15"></textarea>
 
-    <div>
-            <textarea name="context" style = "width:80%" rows="15"></textarea>
-    </div>
-
+        <button type="submit" name="sub2" style="position:fixed; bottom:15%; right: 300px; padding: 10px; background-color: rgba(219, 53, 86, 0.849);">
+            <b>Upload</b>
+        </button>
+    </form>
 </body>
 </html>

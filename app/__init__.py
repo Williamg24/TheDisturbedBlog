@@ -7,7 +7,8 @@
 from flask import Flask  # facilitate flask webserving
 from flask import render_template  # facilitate jinja templating
 from flask import request, Response, redirect, session, url_for  # facilitate form submission
-from db_user import add_to_db, correct_pass, in_table, get_posts
+from db_user import add_to_db, correct_pass, in_table, add_post, get_posts
+import datetime, time
 
 # the conventional way:
 #from flask import Flask, render_template, request
@@ -100,19 +101,31 @@ def signup():
 
 @app.route("/blog", methods=['GET', 'POST'])
 def disp_blogpage():
-    print("\n\n\n")
-    print("***DIAG: this Flask obj ***")
-    print(app)  # displays app
-    print("***DIAG: request obj ***")
-    print(request)  # displays page request
-    print("***DIAG: request.args ***")
-    print(request.args)
-    # print("***DIAG: request.args['username']  ***")
-    # print(request.args['username'])
-    print("***DIAG: request.headers ***")
-    print(request.headers)
+    if request.method == "GET":
+        return render_template('blog.html')
+    elif request.method == "POST":
+        print("\n\n\n")
+        print("***DIAG: this Flask obj ***")
+        print(app)
+        print("***DIAG: request obj ***")
+        print(request)
+        print("***DIAG: request.args ***")
+        print(request.form)
+        print("***DIAG: request.args['username']  ***")
+        print(request.form['username'])
+        print("***DIAG: request.headers ***")
+        # use helper functions from db_user.py to add new blog post to database
 
-    return render_template('blog.html')
+        #BIG_NOTE: FIX THIS ISSUE OF 'TypeError: add_post() takes 7 positional arguments but 9 were given'
+
+
+
+        #if add_post(request.form['username'], request.form['title'],request.form['context'],request.form['date'],request.form['date'],0,datetime.datetime.now()):
+        #    return render_template('index.html', success=True)
+        #else:
+        return render_template('index.html',success=True)
+    else:
+        return Response(status=405)
 
 
 
