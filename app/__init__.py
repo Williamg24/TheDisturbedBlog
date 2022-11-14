@@ -112,23 +112,13 @@ def disp_blogpage():
         print("***DIAG: request.args ***")
         print(request.form)
         print("***DIAG: request.args['username']  ***")
-        print(request.form['username'])
+        #print(request.form['username'])
         print("***DIAG: request.headers ***")
         # use helper functions from db_user.py to add new blog post to database
-
-        #BIG_NOTE: FIX THIS ISSUE OF 'TypeError: add_post() takes 7 positional arguments but 9 were given'
-
-        # def add_post(username,title,content,date_added,data_mod,num_view,time):
-
-        if add_post(session["username"],request.form['title'],request.form['content'],datetime.datetime.now(),datetime.datetime.now(),0,datetime.datetime.now()):
+        if add_post(session.get("username"),request.form['title'],request.form['content'],datetime.datetime.now(),datetime.datetime.now(),0,datetime.datetime.now()):
             return render_template('index.html', success=True, message="Successful")
         # else:
         return render_template('index.html', success=False, message="Failed")
-
-        #if add_post(request.form['username'], request.form['title'],request.form['context'],request.form['date'],request.form['date'],0,datetime.datetime.now()):
-        #    return render_template('index.html', success=True)
-        #else:
-        # return render_template('index.html',success=True)
     else:
         return Response(status=405)
 
