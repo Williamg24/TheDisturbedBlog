@@ -102,7 +102,7 @@ def signup():
 @app.route("/blog", methods=['GET', 'POST'])
 def disp_blogpage():
     if request.method == "GET":
-        return render_template('blog.html')
+        return render_template('blog.html', username = session.get('username'))
     elif request.method == "POST":
         print("\n\n\n")
         print("***DIAG: this Flask obj ***")
