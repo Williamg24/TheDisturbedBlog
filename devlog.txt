@@ -81,6 +81,11 @@ williamG -- 2022-11-10 15:48
 * started working on second database table
 * updated helper functions get_password() and in_table()
 ==============================================================
+marcjiang123 -- 2022-11-11 13:19
+--------------------------------------------------------------
+* added links to homepage that redirected to correct site
+* created help page
+==============================================================
 williamG -- 2022-11-12 20:33
 --------------------------------------------------------------
 * removed hardcoded password and username so that login information would match with data from user table
