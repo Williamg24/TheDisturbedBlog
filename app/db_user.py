@@ -54,7 +54,8 @@ def get_users():
 
 #add post to blog 
 def add_post(username,title,content,date_added,data_mod,num_view,time):
-    c.execute(f'INSERT INTO blog VALUES("{username}","{title}","{content}","{date_added}","{data_mod}","{num_view}","{time}", NULL, "{make_slug(title)}")')
+    # don't use f strings to insert variables into SQL queries 
+    c.execute("INSERT INTO blog VALUES(?,?,?,?,?,?,?,NULL,?)",(username,title,content,date_added,data_mod,num_view,time,make_slug(title)))
     db.commit() 
 
 #gets all posts from blog
