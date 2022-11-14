@@ -7,7 +7,7 @@
 from flask import Flask  # facilitate flask webserving
 from flask import render_template  # facilitate jinja templating
 from flask import request, Response, redirect, session, url_for  # facilitate form submission
-from db_user import add_to_db, correct_pass, in_table, add_post, get_posts
+from db_user import add_to_db, correct_pass, in_table, add_post, get_posts,get_post
 import datetime, time
 
 # the conventional way:
@@ -129,6 +129,14 @@ def disp_blogpage():
         #    return render_template('index.html', success=True)
         #else:
         # return render_template('index.html',success=True)
+    else:
+        return Response(status=405)
+
+#dynamic routing for blog posts (blog/<slug>)
+@app.route("/blog/<slug>", methods=['GET', 'POST'])
+def disp_blogpost(slug):
+    if request.method == "GET":
+        return render_template('blogpost.html', username = session.get('username'), slug = slug, blog = get_post(slug))
     else:
         return Response(status=405)
 
