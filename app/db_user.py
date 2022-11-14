@@ -27,7 +27,8 @@ def add_to_db(username,password):
     if in_table(username): 
         return False
     else:
-        c.execute(f'INSERT INTO usernames VALUES("{username}","{password}")')
+        c.execute("INSERT INTO usernames VALUES(?,?)",(username,password))
+        # c.execute(f'INSERT INTO usernames VALUES("{username}","{password}")')
     db.commit() 
     return True
 
@@ -66,7 +67,7 @@ def get_posts():
 #allow post author to edit post
 def edit_post(username,title,content,date_added,data_mod,num_view,time):
     if in_table(username):
-        c.execute(f'UPDATE blog SET title="{title}", content="{content}", date_added="{date_added}", data_mod="{data_mod}", num_view="{num_view}" WHERE time="{time}"')
+        c.execute("UPDATE blog SET title=?, content=?, date_added=?, data_mod=?, num_view=? WHERE time=?",(title,content,date_added,data_mod,num_view,time))
         db.commit() 
         return True
     return False
@@ -78,7 +79,8 @@ def search_posts(search):
 #delete post
 def delete_post(username,time):
     if in_table(username):
-        c.execute(f'DELETE FROM blog WHERE time="{time}"')
+        c.execute(f'DELETE FROM blog WHERE time=?',(time))
+        # c.execute(f'DELETE FROM blog WHERE time="{time}"')
         db.commit() 
         return True
     return False
