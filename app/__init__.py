@@ -31,7 +31,7 @@ def disp_loginpage():
     # print(request.args['username'])
     print("***DIAG: request.headers ***")
     print(request.headers)
-
+    print(get_posts())
     if "username" in session:
         return render_template('index.html', success=True, blogs = get_posts())
     else:
