@@ -3,6 +3,7 @@
 
 <head>
     <title>Home Page</title>
+    <link rel="stylesheet" href="./static/index.css">
 </head>
 
 <body>
@@ -45,21 +46,28 @@
                     <b>Help?</b>
                 </button>
         </a>
-
-            <!-- Displaying all blogs -->
             <div>
                 <h2>
                     All Blogs
                 </h2>
-                <ul>
+                <div>
                    {% for blog in blogs %}
-                        <li>
-                            <a href="/blog/{{blog[8]}}">
+                   frosted glass card 
+                        <div style="background-color: #f2f2f2; padding: 20px; margin: 20px; border: 1px solid black;">
+                            <h3>
                                 {{blog[1]}}
+                            </h3>
+                            <p>
+                                {{blog[2]}}
+                            </p>
+                            <a href = "/blog/{{blog[8]}}">
+                                <button>
+                                    Read More
+                                </button>
                             </a>
-                        </li>
+                        </div>
                     {% endfor %}
-                </ul>
+                </div>
             </div>
             
             {% else %}
