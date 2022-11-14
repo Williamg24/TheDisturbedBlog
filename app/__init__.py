@@ -122,6 +122,25 @@ def disp_blogpage():
     else:
         return Response(status=405)
 
+@app.route("/view", methods=['GET', 'POST'])
+def view():
+    if request.method == "GET":
+        return render_template('view.html', blogs = get_posts())
+    elif request.method == "POST":
+        print("\n\n\n")
+        print("***DIAG: this Flask obj ***")
+        print(app)
+        print("***DIAG: request obj ***")
+        print(request)
+        print("***DIAG: request.args ***")
+        print(request.form)
+        print("***DIAG: request.args['username']  ***")
+        #print(request.form['username'])
+        print("***DIAG: request.headers ***")
+        # use helper functions from db_user.py to add new blog post to database
+    else:
+        return Response(status=405)
+
 #dynamic routing for blog posts (blog/<slug>)
 @app.route("/blog/<slug>", methods=['GET', 'POST'])
 def disp_blogpost(slug):
@@ -133,6 +152,10 @@ def disp_blogpost(slug):
 @app.route("/help", methods=['GET', 'POST'])
 def help():
     return render_template('help.html')
+
+@app.route("/back", methods=['GET', 'POST'])
+def back():
+    return redirect('/')
 
 if __name__ == "__main__":  # false if this file imported as module
     # enable debugging, auto-restarting of server when this file is modified

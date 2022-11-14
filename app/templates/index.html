@@ -33,7 +33,7 @@
                 <button id = "create" style = position:absolute; padding:10px >
                     Create New Blog
                 </button>
-                <br>
+                <br><br>
                 <div>
                     <button id = "edit">
                         Edit Old Blogs
@@ -41,6 +41,12 @@
                 </div>
             </a>
             <br>
+            <a href = "/view">
+                <button id = "create" style = position:absolute; padding:10px >
+                    View all blogs
+                </button>
+            </a>
+            <br> <br>
             <a href="/help">
                 <button>
                     <b>Help?</b>
@@ -48,7 +54,7 @@
         </a>
             <div>
                 <h2>
-                    All Blogs
+                    Your Blogs
                 </h2>
                 <div>
                    {% for blog in blogs %}

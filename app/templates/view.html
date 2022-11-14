@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Yello</title>
+    <link rel="stylesheet" href="./static/index.css">
+</head>
+
+<body>
+    <div>
+        <h2>Team Name: Disturbed Window Monsters
+            <br>
+            Roster: David, William, Marc
+        </h2>
+        <h1>
+            Welcome to the view page of  Disturbed Blog!
+        </h1>
+        <!-- <p>Login Status: {{ status }}</p> -->
+            <div>
+                <h2>
+                    All Blogs
+                </h2>
+                <div>
+                   {% for blog in blogs %}
+                   <!--frosted glass card -->
+                        <div style="background-color: #f2f2f2; padding: 20px; margin: 20px; border: 1px solid black;">
+                            <h3>
+                                {{blog[1]}}
+                            </h3>
+                            <p>
+                                {{blog[2]}}
+                            </p>
+                            <a href = "/blog/{{blog[8]}}">
+                                <button>
+                                    Read More
+                                </button>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        <br>
+        <form method="POST" action="/logout">
+            <button type="submit" style="position:absolute; top:0%; right:0%;padding:10px; background-color: aquamarine;">
+              Logout
+            </button>
+          </form>
+          
+        <br>
+        <a href="/back">
+            <button style="position:absolute; top:10%; right:0%;padding:10px; background-color: rgb(204, 86, 240);">
+                <b>Return to your page</b>
+            </button>
+        </a>
+        
+    </div>
+</body>
+
+</html>
