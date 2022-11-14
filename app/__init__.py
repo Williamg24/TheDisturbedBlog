@@ -33,7 +33,7 @@ def disp_loginpage():
     print(request.headers)
 
     if "username" in session:
-        return render_template('index.html', success=True, data = get_posts())
+        return render_template('index.html', success=True, blogs = get_posts())
     else:
         return render_template('index.html', success=False)
 

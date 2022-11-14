@@ -40,18 +40,23 @@
                 </div>
             </a>
 
-            <!-- Display table of written blogs
-            <table>
-                {% for row in data %}
-                <tr>
-                {% for item in row %}
-                    <td>{{ item }}</td>
-                {% endfor %}
-                </tr>
-            {% endfor %}
-            </table>
-            -->
-        {% else %}
+            <!-- Displaying all blogs -->
+            <div>
+                <h2>
+                    All Blogs
+                </h2>
+                <ul>
+                   <!-- {% for key, value in blogs.items() %}
+                        <li>
+                            <a href = "/blog?id={{key}}">
+                                {{value}}
+                            </a>
+                        </li>
+                    {% endfor %} -->
+                </ul>
+            </div>
+            
+            {% else %}
         <a href="/signup">
             <button>
                 Get Started
