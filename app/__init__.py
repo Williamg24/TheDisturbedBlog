@@ -127,7 +127,9 @@ def disp_blogpage():
     else:
         return Response(status=405)
 
-
+@app.route("/help", methods=['GET', 'POST'])
+def help():
+    return render_template('help.html')
 
 if __name__ == "__main__":  # false if this file imported as module
     # enable debugging, auto-restarting of server when this file is modified
