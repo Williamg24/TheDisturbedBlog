@@ -40,6 +40,9 @@ def get_pass(username):
                 return i[1]
     return False
 
+def make_slug(title):
+    return title.lower().replace(" ","-")
+
 #check if password is correct
 def correct_pass(username,password):
     return get_pass(username) == password
@@ -51,7 +54,7 @@ def get_users():
 
 #add post to blog 
 def add_post(username,title,content,date_added,data_mod,num_view,time):
-    c.execute(f'INSERT INTO blog VALUES("{username}","{title}","{content}","{date_added}","{data_mod}","{num_view}","{time}")')
+    c.execute(f'INSERT INTO blog VALUES("{username}","{title}","{content}","{date_added}","{data_mod}","{num_view}","{time}", NULL, "{make_slug(title)}")')
     db.commit() 
 
 #gets all posts from blog
