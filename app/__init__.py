@@ -116,9 +116,9 @@ def disp_blogpage():
         print("***DIAG: request.headers ***")
         # use helper functions from db_user.py to add new blog post to database
         if add_post(session.get("username"),request.form['title'],request.form['content'],datetime.datetime.now(),datetime.datetime.now(),0,datetime.datetime.now()):
-            return render_template('index.html', success=True, message="Successful")
-        # else:
-        return render_template('index.html', success=False, message="Failed")
+            return render_template('index.html', success=False, message="Failed")
+        else:
+            return redirect('/')
     else:
         return Response(status=405)
 
