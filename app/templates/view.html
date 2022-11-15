@@ -1,60 +1,70 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Yello</title>
-    <link rel="stylesheet" href="./static/index.css">
-</head>
+    <link rel="stylesheet" href="./static/index.css" />
+  </head>
 
-<body>
+  <body>
     <div>
-        <h2>Team Name: Disturbed Window Monsters
-            <br>
-            Roster: David, William, Marc
-        </h2>
-        <h1>
-            Welcome to the view page of Disturbed Blog!
-        </h1>
+      <h2>
+        Team Name: Disturbed Window Monsters
+        <br />
+        Roster: David, William, Marc
+      </h2>
+      <h1>Welcome to the view page of Disturbed Blog!</h1>
 
+      <div>
+        <h2>All Blogs</h2>
         <div>
-            <h2>
-                All Blogs
-            </h2>
-            <div>
-                {% for blog in blogs %}
-                <!--frosted glass card -->
-                <div style="background-color: #f2f2f2; padding: 20px; margin: 20px; border: 1px solid black;">
-                    <h3>
-                        {{blog[1]}} by {{blog[0]}}
-                    </h3>
-                    <p>
-                        {{blog[2]}}
-                    </p>
-                    <a href="/blog/{{blog[8]}}">
-                        <button>
-                            Read More
-                        </button>
-                    </a>
-                </div>
-                {% endfor %}
-            </div>
+          {% for blog in blogs %}
+          <div
+            style="
+              background-color: #f2f2f2;
+              padding: 20px;
+              margin: 20px;
+              border: 1px solid black;
+            "
+          >
+            <h3>{{blog[1]}} by {{blog[0]}}</h3>
+            <p>{{blog[2]}}</p>
+            <a href="/blog/{{blog[8]}}">
+              <button>Read More</button>
+            </a>
+          </div>
+          {% endfor %}
         </div>
-        <br>
-        <form method="POST" action="/logout">
-            <button type="submit"
-                style="position:absolute; top:0%; right:0%;padding:10px; background-color: aquamarine;">
-                Logout
-            </button>
-        </form>
+      </div>
+      <br />
+      <form method="POST" action="/logout">
+        <button
+          type="submit"
+          style="
+            position: absolute;
+            top: 0%;
+            right: 0%;
+            padding: 10px;
+            background-color: aquamarine;
+          "
+        >
+          Logout
+        </button>
+      </form>
 
-        <br>
-        <a href="/back">
-            <button style="position:absolute; top:10%; right:0%;padding:10px; background-color: rgb(204, 86, 240);">
-                <b>Return to your page</b>
-            </button>
-        </a>
-
+      <br />
+      <a href="/back">
+        <button
+          style="
+            position: absolute;
+            top: 10%;
+            right: 0%;
+            padding: 10px;
+            background-color: rgb(204, 86, 240);
+          "
+        >
+          <b>Return to home page</b>
+        </button>
+      </a>
     </div>
-</body>
-
+  </body>
 </html>

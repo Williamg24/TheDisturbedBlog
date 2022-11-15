@@ -1,59 +1,71 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Edit Posts</title>
-    <link rel="stylesheet" href="./static/index.css">
-</head>
+    <link rel="stylesheet" href="./static/index.css" />
+  </head>
 
-<body>
+  <body>
     <div>
-        <h2>Team Name: Disturbed Window Monsters
-            <br>
-            Roster: David, William, Marc
-        </h2>
-        <h1>
-            Edit your own posts
-        </h1>
-        <!-- <p>Login Status: {{ status }}</p> -->
-            <div>
-                <h2>
-                    All your Blogs
-                </h2>
-                <div>
-                   {% for blog in blogs %}
-                   <!--frosted glass card -->
-                        <div style="background-color: #f2f2f2; padding: 20px; margin: 20px; border: 1px solid black;">
-                            <h3>
-                                {{blog[1]}}
-                            </h3>
-                            <p>
-                                {{blog[2]}}
-                            </p>
-                            <a href = "/blog/{{blog[8]}}/edit">
-                                <button>
-                                    Edit
-                                </button>
-                            </a>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        <br>
-        <form method="POST" action="/logout">
-            <button type="submit" style="position:absolute; top:0%; right:0%;padding:10px; background-color: aquamarine;">
-              Logout
-            </button>
-          </form>
-          
-        <br>
-        <a href="/back">
-            <button style="position:absolute; top:10%; right:0%;padding:10px; background-color: rgb(204, 86, 240);">
-                <b>Return to your page</b>
-            </button>
-        </a>
-        
-    </div>
-</body>
+      <h2>
+        Team Name: Disturbed Window Monsters
+        <br />
+        Roster: David, William, Marc
+      </h2>
+      <h1>Edit your own posts</h1>
+      <!-- <p>Login Status: {{ status }}</p> -->
+      <div>
+        <h2>All your Blogs</h2>
+        <div>
+          {% for blog in blogs %}
+          <!--frosted glass card -->
+          <div
+            style="
+              background-color: #f2f2f2;
+              padding: 20px;
+              margin: 20px;
+              border: 1px solid black;
+            "
+          >
+            <h3>{{blog[1]}}</h3>
+            <p>{{blog[2]}}</p>
+            <a href="/blog/{{blog[8]}}/edit">
+              <button>Edit</button>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <br />
+      <form method="POST" action="/logout">
+        <button
+          type="submit"
+          style="
+            position: absolute;
+            top: 0%;
+            right: 0%;
+            padding: 10px;
+            background-color: aquamarine;
+          "
+        >
+          Logout
+        </button>
+      </form>
 
+      <br />
+      <a href="/back">
+        <button
+          style="
+            position: absolute;
+            top: 10%;
+            right: 0%;
+            padding: 10px;
+            background-color: rgb(204, 86, 240);
+          "
+        >
+          <b>Return to home page</b>
+        </button>
+      </a>
+    </div>
+  </body>
 </html>
