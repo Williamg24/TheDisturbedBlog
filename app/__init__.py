@@ -7,7 +7,7 @@
 from flask import Flask  # facilitate flask webserving
 from flask import render_template  # facilitate jinja templating
 from flask import request, Response, redirect, session, url_for  # facilitate form submission
-from db_user import add_to_db, correct_pass, in_table, add_post, get_posts,get_post,get_user_posts
+from db_user import add_to_db, correct_pass, in_table, add_post, get_posts,get_post,get_user_posts,edit_post,get_title,get_date_added,delete_post
 import datetime, time
 
 # the conventional way:
@@ -173,7 +173,6 @@ def edit():
         #print(request.form['username'])
         print("***DIAG: request.headers ***")
         # use helper functions from db_user.py to add new blog post to database
-
     else:
         return Response(status=405)
 
@@ -182,7 +181,16 @@ def edit_blogpost(slug):
     if request.method == "GET":
         return render_template('editblog.html', username = session.get('username'), slug = slug, blog = get_post(slug))
     elif request.method == "POST":
-        return
+        if(edit_post(session.get('username'),request.form['title'],request.form['content'],get_date_added(slug),request.form['date'],get_unix(slug))):
+            return redirect('/')
+    else:
+        return Response(status=405)
+
+@app.route("/blog/<slug>/edit/delete", methods=['GET', 'POST'])
+def delete(slug):
+    if request.method == "GET":
+        if(delete_post(session.get('username'),get_title(slug))):
+            return redirect('/')
     else:
         return Response(status=405)
 

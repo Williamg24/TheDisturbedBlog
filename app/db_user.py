@@ -8,7 +8,7 @@ c = db.cursor()               #facilitate db ops -- you will use cursor to trigg
 # db.execute("DROP TABLE if exists usernames")
 # db.execute("DROP TABLE if exists blog")
 c.execute("CREATE TABLE IF NOT EXISTS usernames(user TEXT UNIQUE, pass TEXT)")
-c.execute("CREATE TABLE IF NOT EXISTS blog(user TEXT, title TEXT, content TEXT, date_added INTEGER, data_mod INTEGER, num_view INTEGER, time INTEGER, id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT UNIQUE)")
+c.execute("CREATE TABLE IF NOT EXISTS blog(user TEXT, title TEXT, content TEXT, date_added INTEGER, data_mod INTEGER, time INTEGER, id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT UNIQUE)")
 
 #check if username in table: (helper function)
 def in_table(username):
@@ -54,9 +54,9 @@ def get_users():
 
 
 #add post to blog 
-def add_post(username,title,content,date_added,data_mod,num_view,time):
+def add_post(username,title,content,date_added,data_mod,time):
     # don't use f strings to insert variables into SQL queries 
-    c.execute("INSERT INTO blog VALUES(?,?,?,?,?,?,?,NULL,?)",(username,title,content,date_added,data_mod,num_view,time,make_slug(title)))
+    c.execute("INSERT INTO blog VALUES(?,?,?,?,?,?,?,NULL,?)",(username,title,content,date_added,data_mod,time,make_slug(title)))
     db.commit() 
 
 #gets all posts from blog
@@ -70,9 +70,9 @@ def get_user_posts(name):
     return c.execute("SELECT * FROM blog WHERE user=? ORDER BY time DESC",(name,)).fetchall()
 
 #allow post author to edit post
-def edit_post(username,title,content,date_added,data_mod,num_view,time):
+def edit_post(username,title,content,date_added,data_mod,time):
     if in_table(username):
-        c.execute("UPDATE blog SET title=?, content=?, date_added=?, data_mod=?, num_view=? WHERE time=?",(title,content,date_added,data_mod,num_view,time))
+        c.execute("UPDATE blog SET title=?, content=?, date_added=?, data_mod=? WHERE time=?",(title,content,date_added,data_mod,time))
         db.commit() 
         return True
     return False
@@ -82,9 +82,9 @@ def search_posts(search):
     return list(c.execute(f'SELECT * FROM blog WHERE title LIKE "%{search}%" OR content LIKE "%{search}%"').fetchall())
 
 #delete post
-def delete_post(username,time):
+def delete_post(username,title):
     if in_table(username):
-        c.execute(f'DELETE FROM blog WHERE time=?',(time))
+        c.execute('DELETE FROM blog WHERE title=?',(title,))
         # c.execute(f'DELETE FROM blog WHERE time="{time}"')
         db.commit() 
         return True
@@ -94,7 +94,7 @@ def delete_post(username,time):
 def get_author(slug):
     return list(c.execute(f'SELECT user FROM blog WHERE slug="{slug}"').fetchall())[0][0]
 
-#increment number of views
+#increment number of views (old)
 def increment_views(slug):
     c.execute(f'UPDATE blog SET num_view=num_view+1 WHERE slug="{slug}"')
     db.commit()
@@ -102,6 +102,16 @@ def increment_views(slug):
 # get one post by slug
 def get_post(slug):
     return list(c.execute("SELECT * FROM blog WHERE slug=?",(slug,)).fetchall())[0]
+
+def get_unix(slug):
+    c.execute('SELECT time FROM blog WHERE slug=?',(slug,))
+
+def get_date_added(slug):
+    c.execute('SELECT date_added FROM blog WHERE slug=?',(slug,))
+
+def get_title(slug):
+    return list(c.execute("SELECT * FROM blog WHERE slug=?",(slug,)).fetchall())[0][1]
+
 
 db.commit() #save changes
 
