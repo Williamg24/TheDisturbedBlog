@@ -40,11 +40,14 @@ def disp_loginpage():
             return render_template('index.html', success=True, username=session.get('username'), blogs=data)
         else:
             # convert data into a list of dictionaries and add preview to each dictionary then convert back to list
-            # stop ValueError: dictionary update sequence element #0 has length 5; 2 is required
             new_data = {}
             for i in data:
                 new_data[i] = list(i)
-                new_data[i].append(" ".join(i[2].split()[:100]))
+                # new_data[i].append(" ".join(i[2].split()[:100]))
+                if len(i[2].split()) > 100:
+                    new_data[i].append(" ".join(i[2].split()[:100]) + "...")
+                else:
+                    new_data[i].append(" ".join(i[2].split()[:100]))
             data = list(new_data.values())
             return render_template('index.html', success=True, username=session.get('username'), blogs=data)
     else:
@@ -145,7 +148,20 @@ def disp_blogpage():
 @ app.route("/view", methods=['GET', 'POST'])
 def view():
     if request.method == "GET":
-        return render_template('view.html', blogs=get_posts())
+        data = get_posts()
+        if data == []:
+            return render_template('view.html', success=True, blogs=data)
+        else:
+            new_data = {}
+            print(data)
+            for i in data:
+                new_data[i] = list(i)
+                if len(i[2].split()) > 100:
+                    new_data[i].append(" ".join(i[2].split()[:100]) + "...")
+                else:
+                    new_data[i].append(" ".join(i[2].split()[:100]))
+            data = list(new_data.values())
+            return render_template('view.html', success=True, blogs=data)
     elif request.method == "POST":
         print("\n\n\n")
         print("***DIAG: this Flask obj ***")
