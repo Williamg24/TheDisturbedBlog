@@ -173,3 +173,4 @@ davidC -- 2022-11-15 03:00
 * fixed absolute positioning of a lot of the buttons
 * made entire blog UI look more appealing and consistent
 * made buttons more accessible
+* allow blog to render spaces between paragraphs
