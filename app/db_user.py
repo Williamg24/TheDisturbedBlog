@@ -56,7 +56,7 @@ def get_users():
 #add post to blog 
 def add_post(username,title,content,date_added,data_mod,time):
     # don't use f strings to insert variables into SQL queries 
-    c.execute("INSERT INTO blog VALUES(?,?,?,?,?,?,?,NULL,?)",(username,title,content,date_added,data_mod,time,make_slug(title)))
+    c.execute("INSERT INTO blog VALUES(?,?,?,?,?,?,NULL,?)",(username,title,content,date_added,data_mod,time,make_slug(title)))
     db.commit() 
 
 #gets all posts from blog
@@ -82,17 +82,9 @@ def search_posts(search):
     return c.execute("SELECT * FROM blog WHERE title=?",(search,)).fetchall()
 
 #delete post
-<<<<<<< HEAD
 def delete_post(username,title):
     if in_table(username):
         c.execute('DELETE FROM blog WHERE title=?',(title,))
-=======
-#def delete_post(username,slug):
-def delete_post(username,time):
-    if in_table(username):
-        c.execute(f'DELETE FROM blog WHERE time=?',(time))
-        #c.execute(f'DELETE FROM blog WHERE slug=?',(slug))
->>>>>>> e45c7b743c76c1bdf628f4459e625993217f41fc
         # c.execute(f'DELETE FROM blog WHERE time="{time}"')
         db.commit() 
         return True
