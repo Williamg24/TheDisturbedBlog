@@ -114,3 +114,4 @@ db.commit() #save changes
 add_to_db("DWM", "ABC")
 #add_post("DWM", "Test 1", "hello world", 11, 11, 0, 1123)
 print(get_users())
+print(c.execute('SELECT date_added FROM blog WHERE slug="{stuyvesant-test}"'))

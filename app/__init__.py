@@ -173,6 +173,16 @@ def edit():
         #print(request.form['username'])
         print("***DIAG: request.headers ***")
         # use helper functions from db_user.py to add new blog post to database
+
+    else:
+        return Response(status=405)
+
+@app.route("/blog/<slug>/edit", methods=['GET', 'POST'])
+def edit_blogpost(slug):
+    if request.method == "GET":
+        return render_template('editblog.html', username = session.get('username'), slug = slug, blog = get_post(slug))
+    elif request.method == "POST":
+        return
     else:
         return Response(status=405)
 
@@ -180,3 +190,4 @@ if __name__ == "__main__":  # false if this file imported as module
     # enable debugging, auto-restarting of server when this file is modified
     app.debug = True
     app.run()
+
