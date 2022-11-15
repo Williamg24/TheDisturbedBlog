@@ -174,3 +174,4 @@ davidC -- 2022-11-15 03:00
 * made entire blog UI look more appealing and consistent
 * made buttons more accessible
 * allow blog to render spaces between paragraphs
+* added navbar with conditionals to only display when login is successful
