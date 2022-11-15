@@ -7,35 +7,13 @@
 
   <body>
     <div>
-      <h2>
-        Team Name: Disturbed Window Monsters
-        <br />
-        Roster: David, William, Marc
-      </h2>
-      <h1>Welcome to the Disturbed Blog!</h1>
-      <!-- <p>Login Status: {{ status }}</p> -->
-      {% if message %} {{message}} {% endif %} {% if success == True %}
-      <div class="message">
-        You are logged in. Get ready to enjoy our quality content!
-      </div>
-      <!-- Logout button -->
-      <form method="POST" action="/logout">
-        <button
-          type="submit"
-          style="
-            position: absolute;
-            top: 0%;
-            right: 0%;
-            padding: 10px;
-            background-color: aquamarine;
-          "
-        >
-          Logout
-        </button>
-      </form>
-
       <!-- Creating/edit new blogs-->
       <div class="home-buttons">
+        <!--  word logo should be below  -->
+        <a href="/">
+          <button class="logo">Disturbed Blog</button>
+        </a>
+        <br />
         <a href="/blog">
           <button id="create">Create New Blog</button>
         </a>
@@ -58,20 +36,29 @@
             <b>Help?</b>
           </button>
         </a>
+        <!-- Logout button -->
+        <form method="POST" action="/logout">
+          <button type="submit" class="red">Logout</button>
+        </form>
+      </div>
+
+      <h2>
+        Team Name: Disturbed Window Monsters
+        <br />
+        Roster: David, William, Marc
+      </h2>
+      <h1>Welcome to the Disturbed Blog!</h1>
+      <!-- <p>Login Status: {{ status }}</p> -->
+      {% if message %} {{message}} {% endif %} {% if success == True %}
+      <div class="message">
+        You are logged in. Get ready to enjoy our quality content!
       </div>
       <div>
         <h2>Your Blogs</h2>
         <div>
           {% for blog in blogs %}
           <!--frosted glass card -->
-          <div
-            style="
-              background-color: #f2f2f2;
-              padding: 20px;
-              margin: 20px;
-              border: 1px solid black;
-            "
-          >
+          <div class="frosted-glass">
             <h3>{{blog[1]}} by {{blog[0]}}</h3>
 
             <p>{{blog[9]}}</p>
