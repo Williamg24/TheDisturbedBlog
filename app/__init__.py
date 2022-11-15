@@ -7,7 +7,7 @@
 from flask import Flask  # facilitate flask webserving
 from flask import render_template  # facilitate jinja templating
 from flask import request, Response, redirect, session, url_for  # facilitate form submission
-from db_user import add_to_db, correct_pass, in_table, add_post, get_posts,get_post
+from db_user import add_to_db, correct_pass, in_table, add_post, get_posts,get_post,get_user_posts
 import datetime, time
 
 # the conventional way:
@@ -33,7 +33,7 @@ def disp_loginpage():
     print(request.headers)
     print(get_posts())
     if "username" in session:
-        return render_template('index.html', success=True, blogs = get_posts())
+        return render_template('index.html', success=True, blogs = get_user_posts(session.get('username')))
     else:
         return render_template('index.html', success=False)
 

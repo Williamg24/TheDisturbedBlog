@@ -64,6 +64,11 @@ def get_posts():
     # sorted by latest to oldest
     return c.execute("SELECT * FROM blog ORDER BY time DESC").fetchall()
 
+#get all posts from user
+def get_user_posts(name):
+    # sorted by latest to oldest
+    return c.execute("SELECT * FROM blog WHERE user=? ORDER BY time DESC",(name,)).fetchall()
+
 #allow post author to edit post
 def edit_post(username,title,content,date_added,data_mod,num_view,time):
     if in_table(username):
