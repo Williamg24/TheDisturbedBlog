@@ -7,6 +7,20 @@
 
   <body>
     <div>
+      <div class="home-buttons">
+        <br />
+        <a href="/back">
+          <button>
+            <b>Return to home page</b>
+          </button>
+        </a>
+
+        <br />
+        <!-- Logout button -->
+        <form method="POST" action="/logout">
+          <button type="submit" class="red">Logout</button>
+        </form>
+      </div>
       <h2>
         Team Name: Disturbed Window Monsters
         <br />
@@ -29,35 +43,6 @@
         </div>
       </div>
       <br />
-      <form method="POST" action="/logout">
-        <button
-          type="submit"
-          style="
-            position: absolute;
-            top: 0%;
-            right: 0%;
-            padding: 10px;
-            background-color: aquamarine;
-          "
-        >
-          Logout
-        </button>
-      </form>
-
-      <br />
-      <a href="/back">
-        <button
-          style="
-            position: absolute;
-            top: 10%;
-            right: 0%;
-            padding: 10px;
-            background-color: rgb(204, 86, 240);
-          "
-        >
-          <b>Return to home page</b>
-        </button>
-      </a>
     </div>
   </body>
 </html>

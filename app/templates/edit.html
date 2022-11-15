@@ -7,6 +7,20 @@
 
   <body>
     <div>
+      <div class="home-buttons">
+        <br />
+        <a href="/back">
+          <button>
+            <b>Return to home page</b>
+          </button>
+        </a>
+
+        <br />
+        <!-- Logout button -->
+        <form method="POST" action="/logout">
+          <button type="submit" class="red">Logout</button>
+        </form>
+      </div>
       <h2>
         Team Name: Disturbed Window Monsters
         <br />
@@ -19,14 +33,7 @@
         <div>
           {% for blog in blogs %}
           <!--frosted glass card -->
-          <div
-            style="
-              background-color: #f2f2f2;
-              padding: 20px;
-              margin: 20px;
-              border: 1px solid black;
-            "
-          >
+          <div class="frosted-glass">
             <h3>{{blog[1]}}</h3>
             <p>{{blog[2]}}</p>
             <a href="/edit/{{blog[8]}}">
@@ -37,35 +44,8 @@
         </div>
       </div>
       <br />
-      <form method="POST" action="/logout">
-        <button
-          type="submit"
-          style="
-            position: absolute;
-            top: 0%;
-            right: 0%;
-            padding: 10px;
-            background-color: aquamarine;
-          "
-        >
-          Logout
-        </button>
-      </form>
 
       <br />
-      <a href="/back">
-        <button
-          style="
-            position: absolute;
-            top: 10%;
-            right: 0%;
-            padding: 10px;
-            background-color: rgb(204, 86, 240);
-          "
-        >
-          <b>Return to home page</b>
-        </button>
-      </a>
     </div>
   </body>
 </html>
