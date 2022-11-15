@@ -71,7 +71,7 @@ williamG -- 2022-11-10 15:48
 * updated helper functions get_password() and in_table()
 ==============================================================
 
-marcjiang123 -- 2022-11-11 13:19
+marcJ -- 2022-11-11 13:19
 --------------------------------------------------------------
 * added links to homepage that redirected to correct site
 * created help page
@@ -109,10 +109,22 @@ williamG -- 2022-11-14 19:39
 * working on being able to edit the blog posts
 ==============================================================
 
-marcjiang123 -- 2022-11-15 00:15
+marcJ -- 2022-11-15 00:15
 --------------------------------------------------------------
 * finished functionality to edit the title and contents of the users past blogs
     * created edit.html to view all posts to edit and editblog.html to actually edit the post
 * created functionality to delete users blogs
 * tested and debugged delete and edit function
 * fixed db methods to fetch info from table (was causing major headaches in debugging)
+==============================================================
+
+williamG -- 2022-11-15 00:32
+--------------------------------------------------------------
+* help marc debug delete button
+* fixed capitalization error in deleting based on title
+* updated design doc with newest insertions:
+    * id for second table
+    * slug for second table
+* updated both concept and site maps
+* removed some parts that we didn't get up to like search bar and adding images for blogs
+==============================================================
