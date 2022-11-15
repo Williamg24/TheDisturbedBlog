@@ -138,8 +138,13 @@ def view():
         #print(request.form['username'])
         print("***DIAG: request.headers ***")
         # use helper functions from db_user.py to add new blog post to database
+        #if search_posts(request.form['search']):
+        #    return render_template('view.html', blogs = search_posts(request.form['search']))
+        #else:
+        #    return redirect('/view')
     else:
         return Response(status=405)
+
 
 #dynamic routing for blog posts (blog/<slug>)
 @app.route("/blog/<slug>", methods=['GET', 'POST'])

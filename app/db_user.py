@@ -79,7 +79,7 @@ def edit_post(username,title,content,date_added,data_mod,num_view,time):
 
 #search for posts by title or content
 def search_posts(search):
-    return list(c.execute(f'SELECT * FROM blog WHERE title LIKE "%{search}%" OR content LIKE "%{search}%"').fetchall())
+    return c.execute("SELECT * FROM blog WHERE title=?",(search,)).fetchall()
 
 #delete post
 def delete_post(username,time):
