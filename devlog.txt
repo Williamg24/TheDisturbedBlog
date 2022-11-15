@@ -94,3 +94,23 @@ williamG -- 2022-11-12 20:33
 * updated add_to_db(username,password) method so that input cannot be blank
 * modified index.html messages for when login fails
 ==============================================================
+williamG -- 2022-11-13 15:18
+--------------------------------------------------------------
+* linked create and edit page from login page
+* completed blog.html where users can:
+    * input username (text, required)
+    * input title of blog post (text, required)
+    * input date that blog is written (integer, required)
+    * have a text area where they can write the body of blog
+    * upload blog information into database of blogs
+* testing display of all written blogs on user page 
+==============================================================
+williamG -- 2022-11-13 19:39
+--------------------------------------------------------------
+* linked view page from login page
+* completed view.html where all blog posts written are readable by logged-in users
+* updated display window of blogs in index.html where it only shows blogs written by user
+* fixed redirecting issues after user uploads a new blog
+* updated blog.html where username is automatically entered based on the user that is logged-in
+* working on being able to edit the blog posts
+==============================================================
