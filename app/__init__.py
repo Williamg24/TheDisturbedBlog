@@ -157,6 +157,25 @@ def help():
 def back():
     return redirect('/')
 
+@app.route("/edit", methods=['GET', 'POST'])
+def edit():
+    if request.method == "GET":
+        return render_template('edit.html', blogs = get_user_posts(session.get('username')))
+    elif request.method == "POST":
+        print("\n\n\n")
+        print("***DIAG: this Flask obj ***")
+        print(app)
+        print("***DIAG: request obj ***")
+        print(request)
+        print("***DIAG: request.args ***")
+        print(request.form)
+        print("***DIAG: request.args['username']  ***")
+        #print(request.form['username'])
+        print("***DIAG: request.headers ***")
+        # use helper functions from db_user.py to add new blog post to database
+    else:
+        return Response(status=405)
+
 if __name__ == "__main__":  # false if this file imported as module
     # enable debugging, auto-restarting of server when this file is modified
     app.debug = True
