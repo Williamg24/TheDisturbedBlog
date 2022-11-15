@@ -1,43 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Edit Blog</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div>
-        <h2>Team Name: Disturbed Window Monsters
-            <br>
-            Roster: David, William, Marc
-        </h2>
-        <h1>
-            Edit 
-        </h1>
+      <h2>
+        Team Name: Disturbed Window Monsters
+        <br />
+        Roster: David, William, Marc
+      </h2>
+      <h1>Edit</h1>
     </div>
-    <form method = "POST" action ="/blog/{{blog[8]}}/edit">
-        <p>
-            Name: 
-            {{username}}
-        <p>
-            Title: 
-            <br>
-            <input type="text" value= {{blog[1]}} placeholder="Title" name="title" required>
-        </p>
-        <p>
-            Date Modified: 
-            <br>
-            <input type= "number" value = {{blog[3]}} placeholder="20221113" name="date" required>
-        </p>
-        <textarea name="content" style = "width:80%" rows="15"> {{ blog[2] }}</textarea>
-        <br>
-        <button type="submit" name="sub2" style="position:absolute; right: 20%; padding: 10px; background-color: rgba(219, 53, 86, 0.849);">
-            <b>Upload</b>
-        </button>
+    <form method="POST" action="/blog/{{blog[8]}}/edit">
+      <p>Name: {{username}}</p>
+
+      <p>
+        Title:
+        <br />
+        <input
+          type="text"
+          value="{{blog[1]}}"
+          placeholder="Title"
+          name="title"
+          required
+        />
+      </p>
+      <p>
+        Date Modified:
+        <br />
+        <input
+          type="number"
+          value="{{blog[3]}}"
+          placeholder="20221113"
+          name="date"
+          required
+        />
+      </p>
+      <textarea name="content" style="width: 80%" rows="15">
+ {{ blog[2] }}</textarea
+      >
+      <br />
+      <button
+        type="submit"
+        name="sub2"
+        style="
+          position: absolute;
+          right: 20%;
+          padding: 10px;
+          background-color: rgba(219, 53, 86, 0.849);
+        "
+      >
+        <b>Upload</b>
+      </button>
     </form>
-    <a href="/blog/{{blog[8]}}/edit/delete">
-        <button>
-            <b>Delete Post</b>
-        </button>
+    <a href="/edit/{{blog[8]}}/delete">
+      <button>
+        <b>Delete Post</b>
+      </button>
     </a>
-</body>
+  </body>
 </html>
