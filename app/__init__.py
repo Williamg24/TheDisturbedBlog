@@ -145,6 +145,14 @@ def view():
     else:
         return Response(status=405)
 
+#dynamic routing for blog posts (blog/<slug>)
+#@app.route("/delete", methods=['GET', 'POST'])
+#def delete(username,slug):
+#    if delete_post(username,slug):
+#        return render_template('view.html')
+#    else:
+#        return Response(status=405)
+
 
 #dynamic routing for blog posts (blog/<slug>)
 @app.route("/blog/<slug>", methods=['GET', 'POST'])

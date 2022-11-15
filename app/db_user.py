@@ -82,9 +82,11 @@ def search_posts(search):
     return c.execute("SELECT * FROM blog WHERE title=?",(search,)).fetchall()
 
 #delete post
+#def delete_post(username,slug):
 def delete_post(username,time):
     if in_table(username):
         c.execute(f'DELETE FROM blog WHERE time=?',(time))
+        #c.execute(f'DELETE FROM blog WHERE slug=?',(slug))
         # c.execute(f'DELETE FROM blog WHERE time="{time}"')
         db.commit() 
         return True
