@@ -103,10 +103,10 @@ def get_post(slug):
     return list(c.execute("SELECT * FROM blog WHERE slug=?",(slug,)).fetchall())[0]
 
 def get_unix(slug):
-    c.execute('SELECT time FROM blog WHERE slug=?',(slug,))
+    return list(c.execute("SELECT * FROM blog WHERE slug=?",(slug,)).fetchall())[0][6]
 
 def get_date_added(slug):
-    c.execute('SELECT date_added FROM blog WHERE slug=?',(slug,))
+    return list(c.execute("SELECT * FROM blog WHERE slug=?",(slug,)).fetchall())[0][3]
 
 def get_title(slug):
     return list(c.execute("SELECT * FROM blog WHERE slug=?",(slug,)).fetchall())[0][1]
