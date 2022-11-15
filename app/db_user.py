@@ -8,7 +8,7 @@ c = db.cursor()               #facilitate db ops -- you will use cursor to trigg
 # db.execute("DROP TABLE if exists usernames")
 # db.execute("DROP TABLE if exists blog")
 c.execute("CREATE TABLE IF NOT EXISTS usernames(user TEXT UNIQUE, pass TEXT)")
-c.execute("CREATE TABLE IF NOT EXISTS blog(user TEXT, title TEXT, content TEXT, date_added INTEGER, data_mod INTEGER, time INTEGER, id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT UNIQUE)")
+c.execute("CREATE TABLE IF NOT EXISTS blog(user TEXT, title TEXT, content TEXT, date_added INTEGER, data_mod INTEGER,view_count INTEGER, time INTEGER, id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT UNIQUE)")
 
 #check if username in table: (helper function)
 def in_table(username):
@@ -54,9 +54,9 @@ def get_users():
 
 
 #add post to blog 
-def add_post(username,title,content,date_added,data_mod,time):
+def add_post(username,title,content,date_added,data_mod,view,time):
     # don't use f strings to insert variables into SQL queries 
-    c.execute("INSERT INTO blog VALUES(?,?,?,?,?,?,?,NULL,?)",(username,title,content,date_added,data_mod,time,make_slug(title)))
+    c.execute("INSERT INTO blog VALUES(?,?,?,?,?,?,?,NULL,?)",(username,title,content,date_added,data_mod,view,time,make_slug(title)))
     db.commit() 
 
 #gets all posts from blog
@@ -82,18 +82,9 @@ def search_posts(search):
     return c.execute("SELECT * FROM blog WHERE title=?",(search,)).fetchall()
 
 #delete post
-<<<<<<< HEAD
 def delete_post(username,title):
     if in_table(username):
         c.execute('DELETE FROM blog WHERE title=?',(title,))
-=======
-#def delete_post(username,slug):
-def delete_post(username,time):
-    if in_table(username):
-        c.execute(f'DELETE FROM blog WHERE time=?',(time))
-        #c.execute(f'DELETE FROM blog WHERE slug=?',(slug))
->>>>>>> e45c7b743c76c1bdf628f4459e625993217f41fc
-        # c.execute(f'DELETE FROM blog WHERE time="{time}"')
         db.commit() 
         return True
     return False
