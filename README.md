@@ -1,11 +1,11 @@
-#  Our web blog by Disturbed_Window_Monsters 
+#  The Disturbed blog by Disturbed_Window_Monsters 
 ## Roster:
 - William Guo (Project Manager)
 - Marc Jiang (Devo)
 - David Chen (Devo)
 ---
 ## Description of website/app:
-* TBA
+- The Disturbed Blog is a web log hosting site designed to allow users to create and edit their own blog as well as view other user's blog posts. 
 ---
 ## Launch codes:
 1) clone repo using ssh key
