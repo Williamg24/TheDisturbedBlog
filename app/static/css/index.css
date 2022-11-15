@@ -17,6 +17,12 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 
 body {
@@ -24,10 +30,36 @@ body {
   padding: 20px;
 }
 
-/** align child elements to be horizontally centered */
-.container {
+/** home buttons should be horizontal */
+.home-buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/** make messages be inside a alerts box with icon */
+.message {
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.purple {
+  background-color: #5f70cc;
+}
+
+.indigo {
+  background-color: #6e78b1;
+}
+
+.frosted-glass {
+  background-color: rgba(217, 212, 245, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }

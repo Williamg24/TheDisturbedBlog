@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Home Page</title>
-    <link rel="stylesheet" href="./static/index.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
   </head>
 
   <body>
@@ -14,8 +14,10 @@
       </h2>
       <h1>Welcome to the Disturbed Blog!</h1>
       <!-- <p>Login Status: {{ status }}</p> -->
-      {% if message %} {{message}} {% endif %} {% if success == True %} You are
-      logged in. Get ready to enjoy our quality content!
+      {% if message %} {{message}} {% endif %} {% if success == True %}
+      <div class="message">
+        You are logged in. Get ready to enjoy our quality content!
+      </div>
       <!-- Logout button -->
       <form method="POST" action="/logout">
         <button
@@ -33,33 +35,30 @@
       </form>
 
       <!-- Creating/edit new blogs-->
-      <a href="/blog">
-        <button id="create" style="position: absolute" padding:10px>
-          Create New Blog
-        </button>
-      </a>
+      <div class="home-buttons">
+        <a href="/blog">
+          <button id="create">Create New Blog</button>
+        </a>
 
-      <br /><br />
-      <form method="GET" action="/edit">
-        <div>
-          <button type="submit" id="edit">Edit Old Blogs</button>
-        </div>
-      </form>
+        <br /><br />
+        <form method="GET" action="/edit">
+          <div>
+            <button type="submit" id="edit">Edit Old Blogs</button>
+          </div>
+        </form>
 
-      <br />
-      <a href="/view">
-        <button id="create" style="position: absolute" padding:10px>
-          View all blogs
-        </button>
-      </a>
-
-      <br />
-      <br />
-      <a href="/help">
-        <button>
-          <b>Help?</b>
-        </button>
-      </a>
+        <br />
+        <a href="/view">
+          <button id="create">View all blogs</button>
+        </a>
+        <br />
+        <br />
+        <a href="/help">
+          <button>
+            <b>Help?</b>
+          </button>
+        </a>
+      </div>
       <div>
         <h2>Your Blogs</h2>
         <div>
@@ -77,7 +76,7 @@
 
             <p>{{blog[9]}}</p>
             <a href="/blog/{{blog[8]}}">
-              <button>Read More</button>
+              <button class="indigo">Read More</button>
             </a>
           </div>
           {% endfor %}

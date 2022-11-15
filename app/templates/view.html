@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Yello</title>
-    <link rel="stylesheet" href="./static/index.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
   </head>
 
   <body>
@@ -18,14 +18,7 @@
         <h2>All Blogs</h2>
         <div>
           {% for blog in blogs %}
-          <div
-            style="
-              background-color: #f2f2f2;
-              padding: 20px;
-              margin: 20px;
-              border: 1px solid black;
-            "
-          >
+          <div class="frosted-glass">
             <h3>{{blog[1]}} by {{blog[0]}}</h3>
             <p>{{blog[2]}}</p>
             <a href="/blog/{{blog[8]}}">

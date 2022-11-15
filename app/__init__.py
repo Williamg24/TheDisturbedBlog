@@ -34,7 +34,6 @@ def disp_loginpage():
     # print(request.args['username'])
     print("***DIAG: request.headers ***")
     print(request.headers)
-    # print(get_posts())
     if "username" in session:
         data = get_user_posts(session.get('username'))
         if data == []:

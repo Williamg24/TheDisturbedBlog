@@ -1,9 +1,18 @@
 <html>
-    <head>
-        <title>{{ blog[1] }}</title>
-    </head>
-    <body>
-        <h1>{{ blog[1] }}</h1>
-        <p>{{ blog[2] }}</p>
-    </body>
+  <head>
+    <title>{{ blog[1] }}</title>
+    <link rel="stylesheet" href="/static/css/index.css" />
+  </head>
+  <body>
+    <h1>{{ blog[1] }}</h1>
+    <h3>By {{ blog[0] }}</h3>
+    <p>{{ blog[2] }}</p>
+
+    <button
+      style="background-color: rgb(110, 94, 234)"
+      onclick="window.location.href = '/back'"
+    >
+      Back
+    </button>
+  </body>
 </html>

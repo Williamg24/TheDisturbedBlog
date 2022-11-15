@@ -1,28 +1,22 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>LOGIN PAGE</title>
+    <link rel="stylesheet" href="/static/css/index.css" />
+  </head>
 
-<head>
-  <title> LOGIN PAGE </title>
-</head>
+  <body>
+    <h1>Sign Up Page</h1>
 
-<body>
-  <h1>
-    Sign Up Page
-  </h1>
+    <h3>
+      Sign up to create your account. Get access to quality content and more.
+    </h3>
+    <form method="POST" action="/signup">
+      <input type="text" placeholder="username" name="username" />
+      <input type="text" placeholder="password" name="password" />
 
-
-  <h3>
-    Sign up to create your account. Get access to quality content and more.
-  </h3>
-  <form method="POST" action="/signup">
-    <input type="text" placeholder="username" name="username">
-    <input type="text" placeholder="password" name="password">
-
-    <button type="submit" name="sub1">
-        Sign up
-    </button>
-  </form>
-  <br>
-</body>
-
+      <button type="submit" name="sub1">Sign up</button>
+    </form>
+    <br />
+  </body>
 </html>
