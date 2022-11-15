@@ -71,10 +71,24 @@ williamG -- 2022-11-10 15:48
 * updated helper functions get_password() and in_table()
 ==============================================================
 
+davidC -- 2022-11-10 17:00
+--------------------------------------------------------------
+* refactored all html templates to use success and error messages (see commit for details)
+* added jinja conditionals to login page to display error messages 
+==============================================================
+
 marcJ -- 2022-11-11 13:19
 --------------------------------------------------------------
 * added links to homepage that redirected to correct site
 * created help page
+==============================================================
+
+davidC -- 2022-11-12 13:18
+--------------------------------------------------------------
+* was upstate for a district key club meeting with Kiwanis and Circle K
+* renamed database tables for better clarity
+* added delete post, search post and edit post database, and get by author functions
+* made login page more user friendly by adding links to register and help pages
 ==============================================================
 
 williamG -- 2022-11-12 20:33
@@ -98,6 +112,18 @@ williamG -- 2022-11-13 15:18
 * testing display of all written blogs on user page 
 ==============================================================
 
+davidC -- 2022-11-14 14:59
+--------------------------------------------------------------
+* added blog template and blog route
+* update .gitignore to ignore .db files 
+* added some functions to db_users.py
+* fixed dropping tables on every server restart
+* remediate sql injection vulnerability in db_users.py by using parameterized queries
+* fixed blog iteration in blog.html to properly display all blogs
+* fixed typos in html page
+* fixed critical argument error in db_users.py (9 expected but 7 given)
+==============================================================
+
 williamG -- 2022-11-14 19:39
 --------------------------------------------------------------
 * linked view page from login page
@@ -107,6 +133,14 @@ williamG -- 2022-11-14 19:39
 * fixed redirecting issues after user uploads a new blog
 * updated blog.html where username is automatically entered based on the user that is logged-in
 * working on being able to edit the blog posts
+==============================================================
+
+davidC -- 2022-11-14 14:51
+--------------------------------------------------------------
+* updated blog card to display username and date of blog
+* implement dynamic routing based on slug
+* added more database functions to db_users.py
+* allowed for search by username, slug 
 ==============================================================
 
 marcJ -- 2022-11-15 00:15
@@ -128,3 +162,10 @@ williamG -- 2022-11-15 00:32
 * updated both concept and site maps
 * removed some parts that we didn't get up to like search bar and adding images for blogs
 ==============================================================
+davidC -- 2022-11-15 03:00
+--------------------------------------------------------------
+* fixed redirecting issues after user uploads a new blog
+* added customized css for pages
+* fixed venv cannot be deleted issue in repo
+* started to add image upload functionality
+* added preview for blogs on index page so it won't be a huge wall of text
