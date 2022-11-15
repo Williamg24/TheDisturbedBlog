@@ -40,9 +40,15 @@ def disp_loginpage():
         if data == []:
             return render_template('index.html', success=True, username=session.get('username'), blogs=data)
         else:
-            preview = " ".join(data[0][2].split()[:50]) + "..."
-            return render_template('index.html', success=True, username=session.get('username'), blogs=data, preview=preview)
-        # return render_template('index.html', success=True, blogs=data, preview=preview)
+            # convert data into a list of dictionaries and add preview to each dictionary then convert back to list
+            # stop ValueError: dictionary update sequence element #0 has length 5; 2 is required
+            new_data = {}
+            for i in data:
+                new_data[i] = list(i)
+                # new_data[i].append(i[2][:100])
+                new_data[i].append(" ".join(i[2].split()[:100]))
+            data = list(new_data.values())
+            return render_template('index.html', success=True, username=session.get('username'), blogs=data)
     else:
         return render_template('index.html', success=False)
 
@@ -128,6 +134,8 @@ def disp_blogpage():
         # print(request.form['username'])
         print("***DIAG: request.headers ***")
         # use helper functions from db_user.py to add new blog post to database
+        # convert image to base64 string
+        print(request.form['file'])
         if add_post(session.get("username"), request.form['title'], request.form['content'], datetime.datetime.now(), datetime.datetime.now(), 0, datetime.datetime.now()):
             return render_template('index.html', success=False, message="Failed")
         else:
@@ -160,15 +168,8 @@ def view():
         return Response(status=405)
 
 # dynamic routing for blog posts (blog/<slug>)
-# @app.route("/delete", methods=['GET', 'POST'])
-# def delete(username,slug):
-#    if delete_post(username,slug):
-#        return render_template('view.html')
-#    else:
-#        return Response(status=405)
 
 
-# dynamic routing for blog posts (blog/<slug>)
 @ app.route("/blog/<slug>", methods=['GET', 'POST'])
 def disp_blogpost(slug):
     if request.method == "GET":

@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Create Blog</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div>
-        <h2>Team Name: Disturbed Window Monsters
-            <br>
-            Roster: David, William, Marc
-        </h2>
-        <h1>
-            Welcome to the create page of the Disturbed Blog!
-        </h1>
+      <h2>
+        Team Name: Disturbed Window Monsters
+        <br />
+        Roster: David, William, Marc
+      </h2>
+      <h1>Welcome to the create page of the Disturbed Blog!</h1>
     </div>
-    <form method = "POST" action ="/blog">
-        <p>
-            Name: 
-            {{username}}
-        <p>
-            Title: 
-            <br>
-            <input type="text" placeholder="Title" name="title" required>
-        </p>
-        <p>
-            Date: 
-            <br>
-            <input type= "number" placeholder="20221113" name="date" required>
-        </p>
-        <textarea name="content" style = "width:80%" rows="15"></textarea>
-        <br>
-        <button type="submit" name="sub2" style="position:absolute; right: 20%; padding: 10px; background-color: rgba(219, 53, 86, 0.849);">
-            <b>Upload</b>
-        </button>
+    <form method="POST" action="/blog">
+      <p>Name: {{username}}</p>
+
+      <p>
+        Title:
+        <br />
+        <input type="text" placeholder="Title" name="title" required />
+      </p>
+      <p>
+        Date:
+        <br />
+        <input type="number" placeholder="20221113" name="date" required />
+      </p>
+      <textarea name="content" style="width: 80%" rows="15"></textarea>
+      <br />
+      <br />
+      <label for="file">Select image:</label>
+      <input type="file" id="file" name="file" accept="image/*" />
+      <br />
+      <button
+        type="submit"
+        name="sub2"
+        style="
+          position: absolute;
+          right: 20%;
+          padding: 10px;
+          background-color: rgba(219, 53, 86, 0.849);
+        "
+      >
+        <b>Upload</b>
+      </button>
     </form>
-</body>
+  </body>
 </html>
