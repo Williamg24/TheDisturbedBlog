@@ -169,3 +169,7 @@ davidC -- 2022-11-15 03:00
 * fixed venv cannot be deleted issue in repo
 * started to add image upload functionality
 * added preview for blogs on index page so it won't be a huge wall of text
+* added a lot of custom css to all pages
+* fixed absolute positioning of a lot of the buttons
+* made entire blog UI look more appealing and consistent
+* made buttons more accessible
