@@ -44,7 +44,6 @@ def disp_loginpage():
             new_data = {}
             for i in data:
                 new_data[i] = list(i)
-                # new_data[i].append(i[2][:100])
                 new_data[i].append(" ".join(i[2].split()[:100]))
             data = list(new_data.values())
             return render_template('index.html', success=True, username=session.get('username'), blogs=data)
@@ -134,7 +133,7 @@ def disp_blogpage():
         print("***DIAG: request.headers ***")
         # use helper functions from db_user.py to add new blog post to database
         # convert image to base64 string
-        print(request.form['file'])
+        # print(request.form['file'])
         if add_post(session.get("username"), request.form['title'], request.form['content'], datetime.datetime.now(), datetime.datetime.now(), 0, datetime.datetime.now()):
             return render_template('index.html', success=False, message="Failed")
         else:
@@ -172,7 +171,10 @@ def view():
 @ app.route("/blog/<slug>", methods=['GET', 'POST'])
 def disp_blogpost(slug):
     if request.method == "GET":
-        return render_template('blogpost.html', username=session.get('username'), slug=slug, blog=get_post(slug))
+        # convert spaces between paragraphs to <br>
+        data = list(get_post(slug))
+        data[2] = data[2].replace("\n", "<br>")
+        return render_template('blogpost.html', username=session.get('username'), slug=slug, blog=data)
     else:
         return Response(status=405)
 

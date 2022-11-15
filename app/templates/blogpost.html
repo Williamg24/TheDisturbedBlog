@@ -6,7 +6,8 @@
   <body>
     <h1>{{ blog[1] }}</h1>
     <h3>By {{ blog[0] }}</h3>
-    <p>{{ blog[2] }}</p>
+
+    {{ blog[2] | safe }}
 
     <button
       style="background-color: rgb(110, 94, 234)"
