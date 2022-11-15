@@ -37,8 +37,12 @@ def disp_loginpage():
     # print(get_posts())
     if "username" in session:
         data = get_user_posts(session.get('username'))
-        preview = " ".join(data[0][2].split()[:50]) + "..."
-        return render_template('index.html', success=True, blogs=data, preview=preview)
+        if data == []:
+            return render_template('index.html', success=True, username=session.get('username'), blogs=data)
+        else:
+            preview = " ".join(data[0][2].split()[:50]) + "..."
+            return render_template('index.html', success=True, username=session.get('username'), blogs=data, preview=preview)
+        # return render_template('index.html', success=True, blogs=data, preview=preview)
     else:
         return render_template('index.html', success=False)
 
@@ -203,7 +207,7 @@ def edit():
         return Response(status=405)
 
 
-@ app.route("/blog/<slug>/edit", methods=['GET', 'POST'])
+@ app.route("/edit/<slug>", methods=['GET', 'POST'])
 def edit_blogpost(slug):
     if request.method == "GET":
         return render_template('editblog.html', username=session.get('username'), slug=slug, blog=get_post(slug))
@@ -214,7 +218,7 @@ def edit_blogpost(slug):
         return Response(status=405)
 
 
-@ app.route("/blog/<slug>/edit/delete", methods=['GET', 'POST'])
+@ app.route("/edit/<slug>/delete", methods=['GET', 'POST'])
 def delete(slug):
     if request.method == "GET":
         if (delete_post(session.get('username'), get_title(slug))):
